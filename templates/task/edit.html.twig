@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Create New Task{% endblock %}
+{% block title %}Edit Task{% endblock %}
 
 {% block body %}
 
@@ -23,11 +23,11 @@
             <form class="col s12" method="post">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="title" name="title" type="text">
+                        <input id="title" name="title" type="text" value="{{task.title}}">
                         <label for="first_name">Title</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="date" type="date" class="datepicker" name="date">
+                        <input id="date" type="date" class="datepicker" name="date" value="{{task.date}}">
                         <label for="date">Date</label>
                     </div>
                 </div>
@@ -35,11 +35,11 @@
                     <div class="input-field col s6">
                         <p>
                             <label>
-                                <input class="with-gap" name="done" type="radio" value="1"/>
+                                <input class="with-gap" name="done" type="radio" value="true"/>
                                 <span>Done</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="done" type="radio" value="0"/>
+                                <input class="with-gap" name="done" type="radio" value="false"/>
                                 <span>To Do</span>
                             </label>
                         </p>
@@ -55,9 +55,4 @@
     </div>
 
 {% endblock %}
-
-
-
-
-
 

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}To Do List{% endblock %}
+
+{% block body %}
+
+<div class="container">
+        <div>
+            <h1>Tasks</h1>
+        </div>
+        
+        <div>
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if tasks %}
+                {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.date }}</td>
+                        {% if task.done == 1 %}
+                            <td>
+                                <i class="material-icons">check_box</i>
+                            </td>
+                        {% else %}
+                            <td>
+                                <i class="material-icons">check_box_outline_blank</i>
+                            </td>
+                        {% endif%}
+                        <td>
+                            <a href="{{ path('task_edit', {'id': task.id}) }}">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a href="{{ path('task_delete', {'id': task.id}) }}">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>No Tasks yet!</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        
+        </div>
+        <div>
+            <a class="waves-effect waves-light btn" href="{{ path('task_new') }}">Add Task</a>
+        </div>
+        
+</div>
+
+{% endblock %}
