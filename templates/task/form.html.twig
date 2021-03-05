@@ -10,6 +10,7 @@
         </div>
 
         <div class="row">
+
             <div class="alert alert-danger">
                 {% if errors %}
                 <ul>
@@ -19,38 +20,45 @@
                 </ul>
                 {% endif %}
             </div>
-            
-            <form class="col s12" method="post">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input id="title" name="title" type="text">
-                        <label for="first_name">Title</label>
+
+            <div class="group-form">
+                <form class="col s12" method="post">
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <input id="title" name="title" type="text">
+                            <label for="first_name">Title</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <input id="date" type="date" class="datepicker" name="date">
+                            <label for="date">Date</label>
+                        </div>
                     </div>
-                    <div class="input-field col s6">
-                        <input id="date" type="date" class="datepicker" name="date">
-                        <label for="date">Date</label>
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <p>
+                                <label>
+                                    <input class="with-gap" name="done" type="radio" value="1"/>
+                                    <span>Done</span>
+                                </label>
+                                <label>
+                                    <input class="with-gap" name="done" type="radio" value="0"/>
+                                    <span>To Do</span>
+                                </label>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <p>
-                            <label>
-                                <input class="with-gap" name="done" type="radio" value="1"/>
-                                <span>Done</span>
-                            </label>
-                            <label>
-                                <input class="with-gap" name="done" type="radio" value="0"/>
-                                <span>To Do</span>
-                            </label>
-                        </p>
+                    <div class="row col s6">
+                        <button type="submit" class="btn waves-effect orange darken-3">Save
+                            <i class="material-icons right">send</i>
+                        </button>
                     </div>
+                </form>
+                <div class="row col s6">
+                    <a href="{{ path('tasks_index') }}" class="btn waves-effect orange darken-3">Return
+                        <i class="material-icons right">keyboard_return</i>
+                    </a>
                 </div>
-                <div class="row">
-                    <button type="submit" class="btn waves-effect waves">Save
-                        <i class="material-icons right">send</i>
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 

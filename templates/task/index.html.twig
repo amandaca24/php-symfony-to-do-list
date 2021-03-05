@@ -8,54 +8,70 @@
         <div>
             <h1>Tasks</h1>
         </div>
-        
         <div>
-            <table class="highlight">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% if tasks %}
-                {% for task in tasks %}
-                    <tr>
-                        <td>{{ task.title }}</td>
-                        <td>{{ task.date }}</td>
+            <a class="waves-effect orange darken-3 btn" href="{{ path('task_new') }}">Add Task
+                <i class="material-icons right">add_box</i>
+            </a>
+        </div>
+
+        {% for label, messages in app.flashes(['sucess', 'error', 'delete']) %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% if tasks %}
+        {% for task in tasks %}
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card darken-1">
+                    <div class="card-content">
+                        <div class="card-panel orange lighten-1">
+                            <span class="card-title center">{{task.title}}</span>
+                        </div>
+                        <p>Date: {{task.date}}
+                        Status:
                         {% if task.done == 1 %}
-                            <td>
-                                <i class="material-icons">check_box</i>
-                            </td>
+                            <i class="material-icons" sytle="font-size: 30px">check_box</i>
                         {% else %}
-                            <td>
-                                <i class="material-icons">check_box_outline_blank</i>
-                            </td>
-                        {% endif%}
-                        <td>
-                            <a href="{{ path('task_edit', {'id': task.id}) }}">
+                            <i class="material-icons" sytle="font-size: 30px">check_box_outline_blank</i>
+                        {% endif %}
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ path('task_edit', {'id': task.id}) }}">
                                 <i class="material-icons">edit</i>
-                            </a>
-                            <a href="{{ path('task_delete', {'id': task.id}) }}">
+                        </a>
+                        <a href="{{ path('task_delete', {'id': task.id}) }}">
                                 <i class="material-icons">delete</i>
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                {% else %}
-                    <tr>
-                        <td>No Tasks yet!</td>
-                    </tr>
-                {% endif %}
-                </tbody>
-            </table>
-        
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col s12 m7">
+                <h2 class="header">Ops!</h2>
+                <div class="card horizontal">
+                <div class="card-image">
+                    <img src="https://www.azquotes.com/picture-quotes/quote-no-task-is-a-long-one-but-the-task-on-which-one-dare-not-start-it-becomes-a-nightmare-charles-baudelaire-54-34-58.jpg">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                    <p>There is no task yet! Add one by clicking in the button</p>
+                    </div>
+                    <div class="card-action">
+                        <a class="waves-effect orange darken-3 btn" href="{{ path('task_new') }}">Add Task
+                            <i class="material-icons right">add_box</i>
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <a class="waves-effect waves-light btn" href="{{ path('task_new') }}">Add Task</a>
-        </div>
+        {% endif %}
         
 </div>
 

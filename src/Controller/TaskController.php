@@ -111,7 +111,7 @@ class TaskController extends AbstractController
 
 
         if (!$task) {
-            throw $this->addFlash('error', 'There is no task with ' .$id);
+            throw $this->addFlash('delete', 'There is no task with ' .$id);
         }
 
         $entityManager->remove($task);
